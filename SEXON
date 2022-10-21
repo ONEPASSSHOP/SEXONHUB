@@ -9,16 +9,11 @@ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/naypr
     local AutoFarm = Tab:CreateSector("AutoFarm","left")
     AutoFarm:AddLabel("AutoFarm Lv.")
     AutoFarm:AddToggle("AutoFarm",false,function(t)
-    FastAttack:AddToggle("FastAttack",false,function(t)
 
-
--- FastAttack
-
-function Fast()
-
+FastAttack:AddToggle("FastAttack",false,function(t)
 local Fast = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
 local CameraShaker = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework.CameraShaker)
-_G.Fastattack = true -- true\false
+_G.Fastattack = true
 game:GetService("RunService").RenderStepped:Connect(function()
     pcall(function()
         if _G.Fastattack then
@@ -27,34 +22,7 @@ Fast.activeController.hitboxMagnitude = 50
 game:GetService'VirtualUser':CaptureController()
 game:GetService'VirtualUser':Button1Down(Vector2.new(686, 352))
 CameraShaker.CameraShakeInstance.CameraShakeState = {FadingIn = 3, FadingOut = 2, Sustained = 0, Inactive = 1}
-   Fast()
 end
 end)
 end)
 end)
-
--- auto equip
-
-function equip()
-
-local A = AutoFarm:AddDropdown("Please Select Your Weapon", weapon,"None",false,function(t)
-        _G.Weapon = t
-    end)
-
-weapon = {}
-    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-            if v:IsA("Tool") then
-                table.insert(weapon ,v.Name)
-            end
-        end
-
-AutoFarm:AddButton("Refresh Weapon",function()
-        A:Clear(weapon)
-    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-            if v:IsA("Tool") then
-                table.insert(weapon ,v.Name)
-        A:Add(weapon)
-   equip()
-            end
-    end
-    end)
