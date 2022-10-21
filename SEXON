@@ -8,11 +8,14 @@ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/naypr
     local Tab = CenterHubNo1:CreateTab("Main")
     local AutoFarm = Tab:CreateSector("AutoFarm","left")
     AutoFarm:AddLabel("AutoFarm Lv.")
-    AutoFarm:AddToggle("AutoFarm",false,function(f)
+    AutoFarm:AddToggle("AutoFarm",false,function(t)
     FastAttack:AddToggle("FastAttack",false,function(t)
 
 
 -- FastAttack
+
+function Fast()
+
 local Fast = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
 local CameraShaker = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework.CameraShaker)
 _G.Fastattack = true -- true\false
@@ -24,12 +27,15 @@ Fast.activeController.hitboxMagnitude = 50
 game:GetService'VirtualUser':CaptureController()
 game:GetService'VirtualUser':Button1Down(Vector2.new(686, 352))
 CameraShaker.CameraShakeInstance.CameraShakeState = {FadingIn = 3, FadingOut = 2, Sustained = 0, Inactive = 1}
+   Fast()
 end
 end)
 end)
 end)
 
 -- auto equip
+
+function equip()
 
 local A = AutoFarm:AddDropdown("Please Select Your Weapon", weapon,"None",false,function(t)
         _G.Weapon = t
@@ -48,6 +54,7 @@ AutoFarm:AddButton("Refresh Weapon",function()
             if v:IsA("Tool") then
                 table.insert(weapon ,v.Name)
         A:Add(weapon)
+   equip()
             end
     end
     end)
